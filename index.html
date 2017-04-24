@@ -49,6 +49,9 @@
 			border: 1px solid black;
 			border-radius: 2px;
 		}
+		#m:focus{
+			border-color:#4bc6fe;
+		}
 		button{
 			cursor:pointer;
 			border: none;
@@ -105,8 +108,15 @@
 				return false;
 		});
 		socket.on('chat message', function(msg){
+			var date = new Date();
+			var ampm = 'AM';
+			var hr = date.getHours();
+			var min = date.getMinutes();
+			if(hr > 11)
+				ampm = 'PM';
+			hr %= 12;
 			msg = msg.replace(/((((http|ftp|https):\/\/)|(www.))[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?)/g, "<a target='_blank' href='$1' >$1</a>");
-			$("#messages_box").append($('<li>').append($('<span class="txt">').append(msg)).append($('<span class="time">').append('12:24 PM')));
+			$("#messages_box").append($('<li>').append($('<span class="txt">').append(msg)).append($('<span class="time">').append(hr+':'+min+' '+ampm)));
 			$("#messages_box").prop('scrollTop') = $("#messages_box").prop('scrollHeight');
 		});
 	</script>
