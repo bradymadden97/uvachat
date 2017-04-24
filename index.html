@@ -3,79 +3,9 @@
 	<title>Heroku Socket Chat</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<style>
-		body{
-			font-size:16px;
-			font-family: 'Roboto', sans-serif;
-			padding:10px;
-		}
-		#messages_box{
-			border: 1px solid black;
-			border-radius:5px;
-			width:450px;
-			height:500px;
-			max-height:500px;
-			overflow-y:auto;
-			padding:5px;
-			margin-bottom:5px;		
-			list-style-type: none;
-		}
-		#messages_box li{
-			max-width:440px;
-			padding-top:5px;
-			padding-bottom:5px;
-			padding-left:10px;
-		}
-		#messages_box li:nth-child(odd){
-			background-color:#eee;
-		}
-		li:hover .time{
-			display:inline;
-		}
-		.txt{
-			display: inline-block;
-			width:375px;
-			word-wrap:break-word;
-		}
-		.time{
-			font-size:11px;
-			display:none;
-		}
-		#m{
-			width:390px;
-			height:37px;
-			font-size:16px;
-			margin-right:5px;
-			border: 1px solid black;
-			border-radius: 2px;
-		}
-		#m:focus{
-			border-color:#4bc6fe;
-		}
-		button{
-			cursor:pointer;
-			border: none;
-			border-radius: 2px;
-			background:none;
-			height:37px;
-			width:55px;
-			margin-right:5px;
-			background-color:#4bc6fe;
-			text-color:#ffffff;
-		}
-		button:hover{
-			-moz-box-shadow:    2px 2px 2px 2px #dbf3fe;
-			-webkit-box-shadow: 2px 2px 2px 2px #dbf3fe;
-			box-shadow:         2px 2px 2px 2px #dbf3fe;
-		}
-		a {
-			color: blue;
-			text-decoration: none;
-		}
-		
-	</style>
+	<link rel="stylesheet" href="css/chatStyle.css">
 	
-	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <head>
 <body>
@@ -93,32 +23,6 @@
 		</table>
 	</form>
 	<script src="/socket.io/socket.io.js"></script>
-	<script>
-		$(document).on('ready', function(){
-			$("#m").focus();
-		});
-		
-		var socket = io();
-		$('form').submit(function(){
-			if($("#m").val().trim()){
-				socket.emit('chat message', $('#m').val());
-				$('#m').val('');
-				$("#m").focus();
-			}
-				return false;
-		});
-		socket.on('chat message', function(msg){
-			var date = new Date();
-			var ampm = 'AM';
-			var hr = date.getHours();
-			var min = date.getMinutes();
-			if(hr > 11)
-				ampm = 'PM';
-			hr %= 12;
-			msg = msg.replace(/((((http|ftp|https):\/\/)|(www.))[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?)/g, "<a target='_blank' href='$1' >$1</a>");
-			$("#messages_box").append($('<li>').append($('<span class="txt">').append(msg)).append($('<span class="time">').append(hr+':'+min+' '+ampm)));
-			
-		});
-	</script>
+	<script src="js/chatScript.js"></script>
 </body>
 </html>
