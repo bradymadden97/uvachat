@@ -117,7 +117,7 @@
 			hr %= 12;
 			msg = msg.replace(/((((http|ftp|https):\/\/)|(www.))[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?)/g, "<a target='_blank' href='$1' >$1</a>");
 			$("#messages_box").append($('<li>').append($('<span class="txt">').append(msg)).append($('<span class="time">').append(hr+':'+min+' '+ampm)));
-			$("#messages_box").prop('scrollTop') = $("#messages_box").prop('scrollHeight');
+			
 		});
 	</script>
 </body>

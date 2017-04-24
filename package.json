@@ -1,9 +1,13 @@
 {
-  "name": "Heroku-Chat",
+  "name": "UVA-Chat",
   "version": "0.0.1",
   "description": "First socket.io chat app",
   "dependencies": {
     "express": "^4.15.2",
     "socket.io": "^1.7.3"
-  }
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
 }
