@@ -1,0 +1,16 @@
+]
+#stacksLocDot{
+	z-index:999;
+	position:absolute;
+	width:20px;
+	height:20px;
+	
+}
+.showStacksLocModal .modal-body{
+	text-align:center;
+}
+
+#stacksCanvas{
+	width:600px;
+	height:317px;
+}

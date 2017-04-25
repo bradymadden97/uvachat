@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="css/chatStyle.css">
 	<link rel="stylesheet" href="css/navStyle.css">
 	<link rel="stylesheet" href="css/classStyle.css">
+	<link rel="stylesheet" href="css/stacksModalStyle.css">
 	
 	<script src="js/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -32,9 +33,30 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade showStacksLocModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="modal-title">
+						<span id="stacks_location_name">SoandSo</span>'s Location: <b><span id="stacks_location_coord">A4</span></b>
+					</span>
+				</div>
+				<div class="modal-body">
+					<canvas id="stacksCanvas">
+						<svg id="stacksLocDot">
+							<circle cx="10" cy="10" r="8" fill="red" />
+						</svg>
+					</canvas>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<table id="laytable">
 		<tr>
-			<td>
+			<td style="width:210px;">
 				<div id="my_classes">
 					<div id="my_classes_title"><span>My Classes</span></div>
 					<div id="my_class_search">
@@ -67,6 +89,7 @@
 				</div>
 			</td>
 			<td>
+			<button data-toggle="modal" data-target=".showStacksLocModal">Stacks</button>
 			</td>
 			<td>
 				<div id="chat">
@@ -91,5 +114,6 @@
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="js/chatScript.js"></script>
 	<script src="js/classScript.js"></script>
+	<script src="js/stacksModalScript.js"></script>
 </body>
 </html>
