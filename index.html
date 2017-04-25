@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/chatStyle.css">
 	<link rel="stylesheet" href="css/navStyle.css">
+	<link rel="stylesheet" href="css/classStyle.css">
 	
 	<script src="js/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -18,22 +19,67 @@
 			</div>
 		</div>
 	</nav>
+	<div class="modal fade removeClassModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-body">
+					Are you sure you want to remove<br> <b><span id="removeClassModalSpan"></span></b>?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-sm btn-danger">Remove Class</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<table id="laytable">
 		<tr>
+			<td>
+				<div id="my_classes">
+					<div id="my_classes_title"><span>My Classes</span></div>
+					<div id="my_class_search">
+						<span>Add a class:</span>
+						<form id='class_search_form' action="">
+							<table>
+								<tr>
+									<td>
+										<input placeholder="Ex: ECE 2330" id="class_search_input" />
+									</td>
+									<td>
+										<button id="searchsubmitbtn" ><span style="color:white" class="glyphicon glyphicon-plus"></button>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+					<ul id="my_class_list">
+						<li class="cls" data-class="CS 3102">
+							<div class="notification has_notif"></div>
+							<span class="cls_name">CS 3102</span>
+							<span class="delete_class glyphicon glyphicon-remove" data-class="CS 3102" data-toggle="modal" data-target=".removeClassModal"></span>
+						</li>
+						<li class="cls" data-class="ECE 2330">
+							<div class="notification has_notif"></div>
+							<span class="cls_name">ECE 2330</span>
+							<span class="delete_class glyphicon glyphicon-remove" data-class="ECE 2330" data-toggle="modal" data-target=".removeClassModal"></span>
+						</li>
+					</ul>
+				</div>
+			</td>
 			<td>
 			</td>
 			<td>
 				<div id="chat">
 					<div id="class_name_chat"><span id="class_name_span">Class Name</span></div>
 					<ul id='messages_box'></ul>
-					<form action="">
+					<form class="chat_form" action="">
 						<table>
 							<tr>
 								<td>
 									<input id="m" autocomplete='off' />
 								</td>
 								<td>
-									<button><span style="color:white" class="glyphicon glyphicon-send"></button>
+									<button id="chatsubmitbtn"><span style="color:white" class="glyphicon glyphicon-send"></button>
 								</td>
 							</tr>
 						</table>
@@ -44,5 +90,6 @@
 	</table>
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="js/chatScript.js"></script>
+	<script src="js/classScript.js"></script>
 </body>
 </html>

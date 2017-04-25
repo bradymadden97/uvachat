@@ -3,7 +3,7 @@
 		});
 		var currentspeaker = "";
 		var socket = io();
-		$('form').submit(function(){
+		$('.chat_form').submit(function(){
 			if($("#m").val().trim()){
 				socket.emit('chat message', $('#m').val());
 				$('#m').val('');
@@ -24,6 +24,8 @@
 			if(hr > 11)
 				ampm = 'PM';
 			hr %= 12;
+			if(hr == 0)
+				hr = 12;
 			if(min < 10)
 				min = '0' + min;
 			msg = msg.replace(/((((http|ftp|https):\/\/)|(www.))[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?)/g, "<a target='_blank' href='$1' >$1</a>");

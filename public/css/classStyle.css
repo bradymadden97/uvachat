@@ -1,0 +1,91 @@
+#my_classes{
+	position:absolute;
+	left:0px;
+	border:1px solid #b2b4ad;
+	width:210px;
+	height:calc(100vh - 50px);
+}
+#my_classes_title{
+	background-color:#9ee0fe;
+	width:210px;
+	height:40px;
+	border: none;
+	text-align:left;
+	margin-bottom:5px;
+}
+#my_classes_title span{
+	font-size:20px;
+	position:relative;
+	top:15%;
+	margin-left:20px;
+}
+#my_class_search{
+	border-bottom: 1px solid #b2b4ad;
+}
+#my_class_search span{
+	font-size:12px;
+	padding:5px;
+}
+#class_search_input{
+	width:150px;
+	height:35px;
+	font-size:16px;
+	align:center;
+	margin:3px;
+	border: 1px solid black;
+	border-radius: 2px;
+	padding-left:5px;
+}
+#class_search_input:focus{
+	border-color:#4bc6fe;
+}
+#searchsubmitbtn{
+	cursor:pointer;
+	border: none;
+	border-radius: 2px;
+	background:none;
+	height:35px;
+	width:40px;
+	margin-left:5px;
+	background-color:#4bc6fe;
+	text-color:#ffffff;
+}
+
+#my_class_list{
+	list-style-type:none;
+	padding:0;
+}
+.cls{
+	padding:10px;
+	height:70px;
+	position:relative;
+	border-bottom: 1px solid #b2b4ad;
+}
+.cls:hover{
+	cursor:pointer;
+	background-color:#f5f6f3;
+}
+.cls:hover .delete_class{
+	visibility:visible;
+}
+.cls_name{
+	position: absolute;
+	top:calc(50% - 10px);
+	left:30px;
+}
+.has_notif{
+    background:#4bc6fe;
+	position:absolute;
+	top:calc(50% - 6px);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.delete_class{
+	color:red;
+	font-size:20px;
+	visibility:hidden;
+	position:absolute;
+	top:calc(50% - 10px);
+	right:10px;
+}
