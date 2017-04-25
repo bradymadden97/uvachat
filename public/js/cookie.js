@@ -21,7 +21,7 @@ function getCookie(cname) {
     return "";
 }
 
-function checkCookie() {
+function checkUserNameCookie() {
     var user=getCookie("_usr");
     if (user != "") {
         return user;
@@ -31,11 +31,12 @@ function checkCookie() {
            setCookie("_usr", user, 30);
 		   return user;
        }else{
-		   checkCookie();
+		   checkUserNameCookie();
 	   }
     }
 }
 
+
 $(document).ready(function(){
-	checkCookie();
+	checkUserNameCookie();
 });
