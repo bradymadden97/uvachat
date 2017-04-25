@@ -1,6 +1,12 @@
 .navbar{
 	margin-bottom:5px;
 }
+
+.navbar-default{
+	border-color: #b2b4ad;
+	background-color: #f5f6f3;
+}
+
 body{
-	margin-top:50px;
+	margin-top:45px;
 }

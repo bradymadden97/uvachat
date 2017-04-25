@@ -18,20 +18,30 @@
 			</div>
 		</div>
 	</nav>
-	<div id="class_name_chat"><span id="class_name_span">Class Name</span></div>
-	<ul id='messages_box'></ul>
-	<form action="">
-		<table>
-			<tr>
-				<td>
-					<input id="m" autocomplete='off' />
-				</td>
-				<td>
-					<button><span style="color:white" class="glyphicon glyphicon-send"></button>
-				</td>
-			</tr>
-		</table>
-	</form>
+	<table id="laytable">
+		<tr>
+			<td>
+			</td>
+			<td>
+				<div id="chat">
+					<div id="class_name_chat"><span id="class_name_span">Class Name</span></div>
+					<ul id='messages_box'></ul>
+					<form action="">
+						<table>
+							<tr>
+								<td>
+									<input id="m" autocomplete='off' />
+								</td>
+								<td>
+									<button><span style="color:white" class="glyphicon glyphicon-send"></button>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</td>
+		</tr>
+	</table>
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="js/chatScript.js"></script>
 </body>
