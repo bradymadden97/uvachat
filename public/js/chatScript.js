@@ -5,7 +5,12 @@
 		var socket = io();
 		$('.chat_form').submit(function(){
 			if($("#m").val().trim()){
-				socket.emit('chat message', $('#m').val());
+				var upcomingspeaker = checkCookie();
+				var dataobj = {
+					speaker:upcomingspeaker,
+					message:$('#m').val()
+				};
+				socket.emit('chat message', dataobj);
 				$('#m').val('');
 				$("#m").focus();
 			}else{
@@ -14,8 +19,9 @@
 			}
 				return false;
 		});
-		socket.on('chat message', function(msg){
-			var upcomingspeaker = "StudentName"; //Get current speaker from param in future
+		socket.on('chat message', function(data){
+			var upcomingspeaker = data.speaker;
+			var msg = data.message;
 			
 			var date = new Date();
 			var ampm = 'AM';
@@ -32,6 +38,7 @@
 			if(currentspeaker == upcomingspeaker)
 				$("#messages_box").append($('<li>').append($('<span class="txt">').append('<div class="indenttextchat">'+msg+'</div>')).append($('<span class="time">').append(hr+':'+min+' '+ampm)));
 			else{
+				console.log(currentspeaker);
 				currentspeaker = upcomingspeaker;
 				$("#messages_box").append($('<li>').append($('<span class="txt">').append("<b>"+upcomingspeaker+":</b><br>"+'<div class="indenttextchat">'+msg+'</div>')).append($('<span class="time">').append(hr+':'+min+' '+ampm)));
 			}
