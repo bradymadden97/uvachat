@@ -1,7 +1,7 @@
 		$(document).ready(function(){
 			$("#m").focus();
 		});
-		
+		var currentspeaker = "";
 		var socket = io();
 		$('form').submit(function(){
 			if($("#m").val().trim()){
@@ -15,6 +15,8 @@
 				return false;
 		});
 		socket.on('chat message', function(msg){
+			var upcomingspeaker = "StudentName"; //Get current speaker from param in future
+			
 			var date = new Date();
 			var ampm = 'AM';
 			var hr = date.getHours();
@@ -25,6 +27,10 @@
 			if(min < 10)
 				min = '0' + min;
 			msg = msg.replace(/((((http|ftp|https):\/\/)|(www.))[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?)/g, "<a target='_blank' href='$1' >$1</a>");
-			$("#messages_box").append($('<li>').append($('<span class="txt">').append(msg)).append($('<span class="time">').append(hr+':'+min+' '+ampm)));
-			
+			if(currentspeaker == upcomingspeaker)
+				$("#messages_box").append($('<li>').append($('<span class="txt">').append('<span class="indenttextchat">'+msg+'</span>')).append($('<span class="time">').append(hr+':'+min+' '+ampm)));
+			else{
+				currentspeaker = upcomingspeaker;
+				$("#messages_box").append($('<li>').append($('<span class="txt">').append("<b>"+upcomingspeaker+":</b><br>"+'<span class="indenttextchat">'+msg+'</span>')).append($('<span class="time">').append(hr+':'+min+' '+ampm)));
+			}
 		});
