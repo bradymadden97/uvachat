@@ -102,3 +102,45 @@
 			position:absolute;
 			right:0px;
 		}
+		#newMsgBtn{
+			cursor:pointer;
+			z-index:999;
+			background-color:#9ee0fe;
+			height:60px;
+			width:60px;
+			border-radius:50%;
+			position:absolute;
+			right:25px;
+			bottom:55px;
+			border:none;
+			font-size:20px;
+			text-align:center;
+			display:none;
+			transition: all .1s;
+		}
+		.in{
+			-webkit-animation: in 0.5s;
+			animation: in 0.5s;
+		}
+		#newMsgBtn:focus{
+			outline:none;
+		}
+		#newMsgBtn:hover{
+			transform:scale(1.1);
+		}
+		@-webkit-keyframes in {
+			0% {
+				transform: translateY(-20px);
+			}
+			100% {
+				transform: translateY(0px);
+			}
+		}
+		@keyframes in {
+			0% {
+				transform: translateY(-20px);
+			}
+			100% {
+				transform: translateY(0px);
+			}
+		}

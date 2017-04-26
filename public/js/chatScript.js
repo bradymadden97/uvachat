@@ -1,4 +1,6 @@
 		$(document).ready(function(){
+			var mb = document.getElementById('messages_box');
+			mb.scrollTop = mb.scrollHeight - mb.clientHeight;
 			$("#m").focus();
 		});
 		var currentspeaker = "";
@@ -48,10 +50,29 @@
 			}
 			
 			
-			if(scrolledup)
-				console.log("new messages below");
-			else	
-				mb.scrollTop = mb.scrollHeight - mb.clientHeight;
-			//document.getElementById('messages_box').scrollTop = document.getElementById('messages_box').scrollHeight - document.getElementById('messages_box').clientHeight;
-			
+			if(scrolledup){
+				$("#newMsgBtn").css('display','block');
+			}else	
+				mb.scrollTop = mb.scrollHeight - mb.clientHeight;		
+		});
+		
+		$("#newMsgBtn").on('click', function(){
+			var mb = document.getElementById('messages_box');
+			mb.scrollTop = mb.scrollHeight - mb.clientHeight;
+			setTimeout(function(){
+				$("#newMsgBtn").css('display','none');
+			}, 200);
+			$("#m").focus();
+		});
+		
+		$("#messages_box").on('scroll', function(){
+			if($("#newMsgBtn").css('display') != 'none'){
+				var mb = document.getElementById('messages_box');
+				if(mb.scrollHeight - mb.clientHeight - mb.scrollTop < 5){
+					$("#newMsgBtn").addClass('out');
+					setTimeout(function(){
+						$("#newMsgBtn").css('display','none');
+					}, 200);
+				}
+			}
 		});
