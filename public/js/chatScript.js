@@ -4,6 +4,28 @@
 			$("#m").focus();
 		});
 		var currentspeaker = "";
+		var autolinker = new Autolinker( {
+			urls : {
+				schemeMatches : true,
+				wwwMatches    : true,
+				tldMatches    : true
+			},
+			email       : true,
+			phone       : false,
+			mention     : false,
+			hashtag     : false,
+
+			stripPrefix : false,
+			stripTrailingSlash : true,
+			newWindow   : true,
+
+			truncate : {
+				length   : 0,
+				location : 'end'
+			},
+
+			className : ''
+		} );
 		var socket = io();
 		$('.chat_form').submit(function(){
 			if($("#m").val().trim()){
@@ -35,7 +57,8 @@
 				hr = 12;
 			if(min < 10)
 				min = '0' + min;
-			msg = msg.replace(/((((http|ftp|https):\/\/)|(www.))[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?)/g, "<a target='_blank' href='$1' >$1</a>");
+			
+			msg = autolinker.link(msg);
 			
 			var mb = document.getElementById('messages_box');
 			var scrolledup = false;
